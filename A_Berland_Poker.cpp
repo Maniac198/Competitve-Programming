@@ -7,18 +7,17 @@ ll lcm(ll a,ll b) { return a/__gcd(a,b)*b; }
 
 void solve()
 {
-	int n; cin>>n;
-    int c1 = 0;
-    int c2 = 0;
+    int n,m,k; cin >>n>>m>>k;
+    int d = n/k;
 
-    for (int i = 0; i < n; i++)
+    if (d==k)
     {
-        int temp; cin>>temp;
-        if (temp%2) c1++;
-        else c2++; 
+        cout<<m<<endl;
     }
-
-    cout<<min(c2,c1);
+    else if (d < k)
+    {
+        cout<<m<<endl;
+    }    
     
 }
 		
@@ -27,6 +26,11 @@ int main()
 	ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
 
-	solve();
+	int t;
+	cin >> t;
+	while(t--)
+	{
+		solve();
+	}
 	return 0;
 }
