@@ -8,7 +8,15 @@ const int MOD = 1e9 + 7;
 
 void solve()
 {
+    ll n; cin>>n;
+    cout<<2<<endl;
 
+    cout<<n<<" "<<n-1<<endl;
+    for (int i = n,j=n-2; j > 0; i--,j--)
+    {
+        cout<<j<<" "<<i<<endl;
+    }
+    
 }
 		
 int main()

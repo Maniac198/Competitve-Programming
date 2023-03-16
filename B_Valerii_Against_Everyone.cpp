@@ -8,7 +8,24 @@ const int MOD = 1e9 + 7;
 
 void solve()
 {
+    int n; cin>>n;
+    unordered_map<int,int> mp;
+    for (int i = 0; i < n; i++)
+    {
+        int t; cin>>t;
+        mp[t]++;
+    }
 
+    for (auto it : mp)
+    {
+        if (it.second >= 2)
+        {
+            cout<<"YES"<<endl;
+            return;
+        }
+        
+    }
+    cout<<"NO"<<endl; 
 }
 		
 int main()

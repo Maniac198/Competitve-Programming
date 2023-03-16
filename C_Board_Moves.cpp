@@ -8,7 +8,13 @@ const int MOD = 1e9 + 7;
 
 void solve()
 {
+    ll n; cin>>n;
+    ll p = n/2;
+    ll ans = 8*((p*(p+1))/2);
 
+    ll ans2 = (((p-1)*p*(p+1))/3)*8;
+
+    cout<<ans+ans2<<endl;
 }
 		
 int main()

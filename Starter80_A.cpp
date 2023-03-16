@@ -4,11 +4,20 @@ using namespace std;
 typedef long long ll;
 ll lcm(ll a,ll b) { return a/__gcd(a,b)*b; }
 #define endl '\n';
-const int MOD = 1e9 + 7;
 
 void solve()
 {
+    ll a,b,c; cin>>a>>b>>c;
 
+    if (c>=b)
+    {
+        cout<< (a-c)/b + ((a-c)%b>0)<<endl;
+    }
+    else
+    {
+        cout<<a/b+ (a%b>0)<<endl;
+    }
+    
 }
 		
 int main()
