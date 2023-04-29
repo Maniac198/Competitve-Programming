@@ -3,5 +3,5 @@ using namespace std;
 
 int main ()
 {
-    cout<<ceil(4/2.0);
+
 }
