@@ -2,7 +2,7 @@
 using namespace std;
 
 typedef long long ll;
-ll lcm(ll a,ll b) { return a/gcd(a,b)*b; }
+ll lcm(ll a,ll b) { return a/__gcd(a,b)*b; }
 void yes() { cout<<"YES\n"; }
 void no() { cout<<"NO\n"; }
 #define yes yes();
