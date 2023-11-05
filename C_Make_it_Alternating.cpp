@@ -27,10 +27,6 @@ void solve(){
         a.back()++;
     }   
 
-    for(auto it : a){
-        
-    }
-
     long long ans1 = 0, ans2 = 1;
     for (int i : a){
         if (i > 1){
