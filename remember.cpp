@@ -10,8 +10,6 @@ int nxt(){
     return x; 
 }
 
-
-
 #define all(x) (x).begin(),(x).end()
 
 int main() {
