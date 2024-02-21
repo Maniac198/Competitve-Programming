@@ -12,18 +12,18 @@ int          nxt(){ int x; cin>>x; return x;}
 const        int MOD = 1e9 + 7;
 
 void solve(){
-    int n, k; cin>>n>>k; 
-    for(int i = 1; i<=log2(n)+1; i++){
-        int x = 1<<i;
-        int y = (n + (x/2))/x; 
-        if(k <= y){
-            cout<<(x/2) + ((k-1) * x)<<endl;
-            return;
-        }
-        else{
-            k -= y;
-        }
+    int n; cin>>n; 
+    vector<int> v(n);
+    for(auto &it : v) cin>>it; 
+    sort(all(v));
+    int ans = 0; 
+    int l = 0, r = n-1; 
+    while(l <= r){
+        ans += (v[r]-v[l]);
+        l++;
+        r--;
     }
+    cout<<ans<<endl;
 }
      
 signed main(){
