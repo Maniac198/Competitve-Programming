@@ -78,5 +78,11 @@ int main() {
 
     // add into vector begining
     vec.insert(vec.begin(), 1);
+    
+    // remove all elements from vector
+    vec.clear();
+
+    // priority queue defination
+    priority_queue<int,vector<int>,greater<int>> q(vec.begin(),vec.end()); 
 }
 

@@ -5,6 +5,19 @@
         },
         {
             "path": "../SubmissionTicket"
+        },
+        {
+            "path": "../Inhouse/Task-Management"
         }
-    ]
+    ],
+    "settings": {
+        "files.associations": {
+            "valarray": "cpp",
+            "iostream": "cpp",
+            "unordered_set": "cpp",
+            "chrono": "cpp",
+            "span": "cpp",
+            "utility": "cpp"
+        }
+    }
 }
