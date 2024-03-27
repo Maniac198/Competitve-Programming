@@ -13,21 +13,27 @@ const        int MOD = 1e9 + 7;
 
 void solve(){
     int n; cin>>n; 
-    vector<int> v(n);
-    for(auto & it : v) cin>>it;
-    int mn = *min_element(all(v)); 
+    string s; cin>>s; 
 
-    bool flag = false; 
-    int cnt = 0; 
-    rep(i,0,n){
-        if(v[i] == mn) cnt++;
-        if(v[i] % mn != 0) flag = true;
+    string ans;
+    rep(i,n,0){
+        if(s[i] == 'a' || s[i] == 'e'){
+            rep(j,i+1,i-1){
+                ans += s[j];
+            }
+            ans += '.';
+            i--;
+        }
+        else{
+            rep(j,i+1,i-2){
+                ans+=s[j];
+            }
+            ans += '.';
+            i-=2; 
+        }
     }
-
-    if(cnt == 1 or flag){
-        yes; return;
-    }
-    no;
+    reverse(all(ans));
+    cout<<ans.substr(1,ans.size())<<endl;
 }
      
 signed main(){

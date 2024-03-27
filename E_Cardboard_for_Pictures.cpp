@@ -12,23 +12,37 @@ int          nxt(){ int x; cin>>x; return x;}
 const        int MOD = 1e9 + 7;
 
 void solve(){
-    int n; cin>>n; 
+    int n, c; cin>>n>>c; 
     vector<int> v(n);
-    for(auto & it : v) cin>>it;
-    int mn = *min_element(all(v)); 
+    for(auto &it : v) cin>>it; 
 
-    bool flag = false; 
-    int cnt = 0; 
-    rep(i,0,n){
-        if(v[i] == mn) cnt++;
-        if(v[i] % mn != 0) flag = true;
-    }
+    int l = 0, r = 1e9; 
+    while( l <= r){
+        int mid = (l+r)/2; 
+        int curr = 0; 
+        bool flag = false; 
+        for(auto it : v){
+            int tp = (mid+it)*(mid+it);
+            if( c - tp < curr){
+                flag = true;
+                break;
+            }
+            curr += tp;
+        }
 
-    if(cnt == 1 or flag){
-        yes; return;
+        
+        if(flag){
+            r = mid-1; 
+        }
+        else if(c == curr){
+            cout<<mid/2<<endl;
+            return;
+        }
+        else{
+            l = mid+1;
+        }
     }
-    no;
-}
+}   
      
 signed main(){
     ios_base::sync_with_stdio(0);

@@ -12,23 +12,29 @@ int          nxt(){ int x; cin>>x; return x;}
 const        int MOD = 1e9 + 7;
 
 void solve(){
-    int n; cin>>n; 
-    vector<int> v(n);
-    for(auto & it : v) cin>>it;
-    int mn = *min_element(all(v)); 
-
-    bool flag = false; 
-    int cnt = 0; 
-    rep(i,0,n){
-        if(v[i] == mn) cnt++;
-        if(v[i] % mn != 0) flag = true;
+    int n,k; cin>>n>>k; 
+    vector<int> v(n); 
+    for(auto &it : v) cin>>it; 
+    vector<int> preMax(n,0);
+    preMax[0] = v[0];
+    rep(i,1,n){
+        preMax[i] = max(preMax[i-1],v[i]);
     }
 
-    if(cnt == 1 or flag){
-        yes; return;
+    vector<int> preSum(n+1,0);
+    preSum[1] = v[0];
+    rep(i,2,n+1){
+        preSum[i] = preSum[i-1] + v[i-1];
     }
-    no;
-}
+
+    while(k--){
+        int query = nxt();
+        auto ind = lower_bound(all(preMax),query+1);
+        int i = ind-preMax.begin();
+        cout<<preSum[i]<<" ";
+    }
+    cout<<endl;
+}  
      
 signed main(){
     ios_base::sync_with_stdio(0);

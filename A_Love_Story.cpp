@@ -12,22 +12,13 @@ int          nxt(){ int x; cin>>x; return x;}
 const        int MOD = 1e9 + 7;
 
 void solve(){
-    int n; cin>>n; 
-    vector<int> v(n);
-    for(auto & it : v) cin>>it;
-    int mn = *min_element(all(v)); 
-
-    bool flag = false; 
-    int cnt = 0; 
-    rep(i,0,n){
-        if(v[i] == mn) cnt++;
-        if(v[i] % mn != 0) flag = true;
+    string s = "codeforces", p; 
+    cin>>p;
+    int cnt = 0;
+    rep(i,0,p.length()){
+        if(s[i] != p[i]) cnt++;
     }
-
-    if(cnt == 1 or flag){
-        yes; return;
-    }
-    no;
+    cout<<cnt<<endl;
 }
      
 signed main(){

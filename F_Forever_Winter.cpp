@@ -12,22 +12,31 @@ int          nxt(){ int x; cin>>x; return x;}
 const        int MOD = 1e9 + 7;
 
 void solve(){
-    int n; cin>>n; 
-    vector<int> v(n);
-    for(auto & it : v) cin>>it;
-    int mn = *min_element(all(v)); 
+    int n,m; cin>>n>>m;
+    vector<int> adj[n];
+    while(m--){
+        int u,v; cin>>u>>v;
+        u--,v--;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
 
-    bool flag = false; 
-    int cnt = 0; 
+    int leaf = 0;
     rep(i,0,n){
-        if(v[i] == mn) cnt++;
-        if(v[i] % mn != 0) flag = true;
+        if(adj[i].size() == 1){
+            leaf = i; break;
+        }
     }
 
-    if(cnt == 1 or flag){
-        yes; return;
+    int node = adj[leaf][0];
+    int center = 0;
+    for(auto it : adj[node]){
+        if(adj[it].size() > 1){
+            center = it; break;
+        }
     }
-    no;
+
+    cout<<adj[center].size() << " " << adj[node].size() - 1 <<endl;
 }
      
 signed main(){

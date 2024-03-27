@@ -12,30 +12,32 @@ int          nxt(){ int x; cin>>x; return x;}
 const        int MOD = 1e9 + 7;
 
 void solve(){
-    int n; cin>>n; 
-    vector<int> v(n);
-    for(auto & it : v) cin>>it;
-    int mn = *min_element(all(v)); 
-
-    bool flag = false; 
-    int cnt = 0; 
+    int n,x; cin>>n>>x; 
+    vector<pair<int,int>> v;
     rep(i,0,n){
-        if(v[i] == mn) cnt++;
-        if(v[i] % mn != 0) flag = true;
+        int t = nxt();
+        v.push_back({t,i+1});
     }
-
-    if(cnt == 1 or flag){
-        yes; return;
+    sort(all(v));
+    int l = 0, r = n-1;
+    while(l < r){
+        if(v[l].first + v[r].first == x){
+            cout<<v[l].second<<" "<<v[r].second<<endl;
+            return;
+        }
+        else if(v[l].first + v[r].first > x){
+            r--;
+        }
+        else{
+            l++;
+        }
     }
-    no;
+    cout<<"IMPOSSIBLE"<<endl;
 }
      
 signed main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
 
-    int t; cin >> t;
-    while(t--){
-        solve();
-    }
+    solve();
 }

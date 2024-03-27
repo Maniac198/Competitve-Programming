@@ -13,21 +13,28 @@ const        int MOD = 1e9 + 7;
 
 void solve(){
     int n; cin>>n; 
-    vector<int> v(n);
-    for(auto & it : v) cin>>it;
-    int mn = *min_element(all(v)); 
-
-    bool flag = false; 
-    int cnt = 0; 
-    rep(i,0,n){
-        if(v[i] == mn) cnt++;
-        if(v[i] % mn != 0) flag = true;
+    int a = 1e9, b = 1e9, c = 1e9;
+    while(n--){
+        int p = nxt();
+        string s; cin>>s; 
+        if(s == "01"){
+            a = min(a,p);
+        }
+        else if(s == "10"){
+            b = min(b,p);
+        }
+        else if(s == "11"){
+            c = min(c,p);
+        }
     }
 
-    if(cnt == 1 or flag){
-        yes; return;
+    int ans = min({a+b,c});
+    if( ans >= 1e9){
+        cout<<-1<<endl;
+        return;
     }
-    no;
+
+    cout<<ans<<endl;
 }
      
 signed main(){

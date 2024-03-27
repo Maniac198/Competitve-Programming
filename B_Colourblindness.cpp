@@ -13,21 +13,16 @@ const        int MOD = 1e9 + 7;
 
 void solve(){
     int n; cin>>n; 
-    vector<int> v(n);
-    for(auto & it : v) cin>>it;
-    int mn = *min_element(all(v)); 
-
-    bool flag = false; 
-    int cnt = 0; 
+    string a,b; cin>>a>>b; 
     rep(i,0,n){
-        if(v[i] == mn) cnt++;
-        if(v[i] % mn != 0) flag = true;
+        if((a[i]=='R' and b[i]=='B') || (a[i]=='B' and b[i]=='R')){
+            no; return;
+        }
+        else if((a[i]=='R' and b[i]=='G') || (a[i]=='G' and b[i]=='R')){
+            no; return;
+        }
     }
-
-    if(cnt == 1 or flag){
-        yes; return;
-    }
-    no;
+    yes;
 }
      
 signed main(){

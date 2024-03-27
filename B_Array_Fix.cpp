@@ -14,20 +14,32 @@ const        int MOD = 1e9 + 7;
 void solve(){
     int n; cin>>n; 
     vector<int> v(n);
-    for(auto & it : v) cin>>it;
-    int mn = *min_element(all(v)); 
+    for(auto &it : v) cin>>it; 
 
-    bool flag = false; 
-    int cnt = 0; 
+    int curr = 0; 
     rep(i,0,n){
-        if(v[i] == mn) cnt++;
-        if(v[i] % mn != 0) flag = true;
+        if(v[i] < curr){
+            no; return;
+        }
+        else{
+            int x = v[i]/10;
+            int y = v[i]%10;
+
+            if(x >= curr){
+                if(y >= x){
+                    curr = y; 
+                }
+                else{
+                    curr = v[i];
+                }
+            }
+            else{
+                curr = v[i];
+            }
+        }
     }
 
-    if(cnt == 1 or flag){
-        yes; return;
-    }
-    no;
+    yes; 
 }
      
 signed main(){

@@ -13,21 +13,29 @@ const        int MOD = 1e9 + 7;
 
 void solve(){
     int n; cin>>n; 
-    vector<int> v(n);
-    for(auto & it : v) cin>>it;
-    int mn = *min_element(all(v)); 
-
-    bool flag = false; 
-    int cnt = 0; 
-    rep(i,0,n){
-        if(v[i] == mn) cnt++;
-        if(v[i] % mn != 0) flag = true;
+    vector<int> v(n); 
+    for(auto &it : v) cin>>it; 
+    
+    int a[1001] = {0};
+    int gcd = 0;
+    rep(i,1,n+1){
+        a[v[i-1]] = i;
+        gcd = __gcd(gcd,v[i-1]);
     }
 
-    if(cnt == 1 or flag){
-        yes; return;
+    if(gcd>1){
+        cout<<-1<<endl; return;
     }
-    no;
+    int ans = -1; 
+    rep(i,1,1001){
+        rep(j,1,1001){
+            if(a[i]!=0 and a[j]!=0 and a[j]+a[i]>ans and __gcd(i,j) == 1){
+                ans = max(ans,a[i] + a[j]);
+            }
+        }
+    }
+
+    cout<<ans<<endl;
 }
      
 signed main(){

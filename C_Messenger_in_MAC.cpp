@@ -12,22 +12,32 @@ int          nxt(){ int x; cin>>x; return x;}
 const        int MOD = 1e9 + 7;
 
 void solve(){
-    int n; cin>>n; 
-    vector<int> v(n);
-    for(auto & it : v) cin>>it;
-    int mn = *min_element(all(v)); 
-
-    bool flag = false; 
-    int cnt = 0; 
+    int n,l; cin>>n>>l; 
+    vector<pair<int,int>> v; 
     rep(i,0,n){
-        if(v[i] == mn) cnt++;
-        if(v[i] % mn != 0) flag = true;
+        v.push_back({nxt(),nxt()});
     }
 
-    if(cnt == 1 or flag){
-        yes; return;
+    sort(all(v),[&](const pair<int,int> &a, const pair<int,int> &b){
+        return a.second < b.second;
+    });
+
+    int ans = 0; 
+    for(int i = 0; i<n; i++){
+        priority_queue<int> pq;
+        int sum = 0;
+        for(int j = i; j<n ; j++){ 
+            sum += v[j].first;
+            pq.push(v[j].first);
+            while(!pq.empty() && sum + v[j].second - v[i].second > l){
+                sum -= pq.top();
+                pq.pop();
+            }
+            ans = max(ans,(int) pq.size());
+        }
     }
-    no;
+
+    cout<<ans<<endl;
 }
      
 signed main(){

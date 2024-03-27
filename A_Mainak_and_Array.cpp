@@ -13,21 +13,22 @@ const        int MOD = 1e9 + 7;
 
 void solve(){
     int n; cin>>n; 
-    vector<int> v(n);
-    for(auto & it : v) cin>>it;
-    int mn = *min_element(all(v)); 
+    vector<int> v(n); 
+    for(auto &it : v) cin>>it; 
 
-    bool flag = false; 
-    int cnt = 0; 
+    int ans = v[n-1] - v[0];
+
     rep(i,0,n){
-        if(v[i] == mn) cnt++;
-        if(v[i] % mn != 0) flag = true;
+        ans = max(ans,v[(i-1+n)%n]-v[i]);
+    }
+    rep(i,1,n){
+        ans = max(ans,v[n-1]-v[i]);
+    }
+    rep(i,1,n){
+        ans = max(ans,v[i]-v[0]);
     }
 
-    if(cnt == 1 or flag){
-        yes; return;
-    }
-    no;
+    cout << ans << endl;
 }
      
 signed main(){

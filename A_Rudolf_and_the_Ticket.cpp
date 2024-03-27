@@ -2,7 +2,7 @@
 using namespace std;
 
 #define      yes {cout<<"YES"<<endl;}
-#define      no {cout<<"NO"<<endl;}
+#define      no  {cout<<"NO" <<endl;}
 #define      int long long 
 #define      endl '\n';
 #define      all(x) x.begin(),x.end()
@@ -12,22 +12,18 @@ int          nxt(){ int x; cin>>x; return x;}
 const        int MOD = 1e9 + 7;
 
 void solve(){
-    int n; cin>>n; 
-    vector<int> v(n);
-    for(auto & it : v) cin>>it;
-    int mn = *min_element(all(v)); 
+    int n,m,k; cin>>n>>m>>k; 
+    vector<int> a(n),b(m); 
+    for(auto &it : a) cin>>it; 
+    for(auto &it : b) cin>>it; 
 
-    bool flag = false; 
-    int cnt = 0; 
+    int res = 0;
     rep(i,0,n){
-        if(v[i] == mn) cnt++;
-        if(v[i] % mn != 0) flag = true;
+        rep(j,0,m){
+            res += (a[i] + b[j] <= k);
+        }
     }
-
-    if(cnt == 1 or flag){
-        yes; return;
-    }
-    no;
+    cout<<res<<endl;
 }
      
 signed main(){

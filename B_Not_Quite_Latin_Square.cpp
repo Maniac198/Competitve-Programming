@@ -12,22 +12,27 @@ int          nxt(){ int x; cin>>x; return x;}
 const        int MOD = 1e9 + 7;
 
 void solve(){
-    int n; cin>>n; 
-    vector<int> v(n);
-    for(auto & it : v) cin>>it;
-    int mn = *min_element(all(v)); 
-
-    bool flag = false; 
-    int cnt = 0; 
-    rep(i,0,n){
-        if(v[i] == mn) cnt++;
-        if(v[i] % mn != 0) flag = true;
+    string s[3];
+    rep(i,0,3) cin>>s[i];
+    int j = 0;
+    rep(i,0,3){
+        rep(k,0,3){
+            if(s[i][k] == '?'){
+                j = i; 
+                break;
+            }
+        }
     }
 
-    if(cnt == 1 or flag){
-        yes; return;
+    if(s[j].find('A') == string::npos){
+        cout<<'A'<<endl;
     }
-    no;
+    else if(s[j].find('B') == string::npos){
+        cout<<'B'<<endl;
+    }
+    else{
+        cout<<'C'<<endl;
+    }
 }
      
 signed main(){

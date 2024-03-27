@@ -13,29 +13,18 @@ const        int MOD = 1e9 + 7;
 
 void solve(){
     int n; cin>>n; 
-    vector<int> v(n);
-    for(auto & it : v) cin>>it;
-    int mn = *min_element(all(v)); 
-
-    bool flag = false; 
-    int cnt = 0; 
+    vector<int> v; 
     rep(i,0,n){
-        if(v[i] == mn) cnt++;
-        if(v[i] % mn != 0) flag = true;
+        v.push_back(nxt());
     }
-
-    if(cnt == 1 or flag){
-        yes; return;
-    }
-    no;
+    sort(all(v));
+    v.resize(unique(all(v))-v.begin());
+    cout<<v.size()<<endl;
 }
      
 signed main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
 
-    int t; cin >> t;
-    while(t--){
-        solve();
-    }
+    solve();
 }

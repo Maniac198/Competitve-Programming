@@ -13,21 +13,15 @@ const        int MOD = 1e9 + 7;
 
 void solve(){
     int n; cin>>n; 
-    vector<int> v(n);
-    for(auto & it : v) cin>>it;
-    int mn = *min_element(all(v)); 
-
-    bool flag = false; 
-    int cnt = 0; 
-    rep(i,0,n){
-        if(v[i] == mn) cnt++;
-        if(v[i] % mn != 0) flag = true;
+    if(n&1){
+        no; return;
     }
 
-    if(cnt == 1 or flag){
-        yes; return;
+    yes; 
+    rep(i,0,n/2){
+        cout<<"AAB";
     }
-    no;
+    cout<<endl;
 }
      
 signed main(){

@@ -11,23 +11,35 @@ int          lcm(int a,int b) { return a/__gcd(a,b)*b; }
 int          nxt(){ int x; cin>>x; return x;}
 const        int MOD = 1e9 + 7;
 
+inline bool bt(int x, int pos){
+    return ((x & (1ll << pos)) > 0); 
+}
+
 void solve(){
-    int n; cin>>n; 
-    vector<int> v(n);
-    for(auto & it : v) cin>>it;
-    int mn = *min_element(all(v)); 
+    int a,b; cin>>a>>b; 
 
-    bool flag = false; 
-    int cnt = 0; 
-    rep(i,0,n){
-        if(v[i] == mn) cnt++;
-        if(v[i] % mn != 0) flag = true;
+    int L = 62; 
+    int cnt = 0, last = -1;
+    for(int i = L; i>=0; i--){
+        if(bt(a,i)){
+            if(bt(b,i)){
+                cout<<1<<endl;
+                cout<<a<<' '<<b<<endl;
+                return;
+            }
+
+            cnt++;
+            last = i; 
+            if(cnt == 2) break;
+        }
+        else if(bt(b,i)){
+            cout<<-1<<endl;
+            return;
+        }
     }
 
-    if(cnt == 1 or flag){
-        yes; return;
-    }
-    no;
+    cout<<2<<endl;
+    cout<<a<<' '<< b+(1ll<<last)<<' '<<b<<endl;
 }
      
 signed main(){

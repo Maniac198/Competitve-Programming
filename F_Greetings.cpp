@@ -1,5 +1,8 @@
 #include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
 using namespace std;
+using namespace __gnu_pbds;
 
 #define      yes {cout<<"YES"<<endl;}
 #define      no {cout<<"NO"<<endl;}
@@ -10,24 +13,26 @@ using namespace std;
 int          lcm(int a,int b) { return a/__gcd(a,b)*b; }
 int          nxt(){ int x; cin>>x; return x;}
 const        int MOD = 1e9 + 7;
+tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> st;
 
 void solve(){
-    int n; cin>>n; 
-    vector<int> v(n);
-    for(auto & it : v) cin>>it;
-    int mn = *min_element(all(v)); 
-
-    bool flag = false; 
-    int cnt = 0; 
-    rep(i,0,n){
-        if(v[i] == mn) cnt++;
-        if(v[i] % mn != 0) flag = true;
+    int n; cin >> n;
+    vector<pair<int, int>> p(n);
+    for (auto &[a, b]: p){
+        cin >> a >> b;
+        st.insert(b);
     }
-
-    if(cnt == 1 or flag){
-        yes; return;
+ 
+    sort(p.begin(), p.end());
+ 
+    int ans = 0;
+    for (auto [a, b]: p) {
+        st.erase(b);
+        int v = st.order_of_key(b);
+        ans += v;
     }
-    no;
+ 
+    cout << ans << endl;
 }
      
 signed main(){

@@ -12,22 +12,23 @@ int          nxt(){ int x; cin>>x; return x;}
 const        int MOD = 1e9 + 7;
 
 void solve(){
-    int n; cin>>n; 
+    int n, c;cin>>n>>c; 
     vector<int> v(n);
-    for(auto & it : v) cin>>it;
-    int mn = *min_element(all(v)); 
+    for(auto &it : v) cin>>it; 
+    int ans = ((c+1)*(c+2))/2; 
 
-    bool flag = false; 
-    int cnt = 0; 
+    int ev = 0, od = 0; 
     rep(i,0,n){
-        if(v[i] == mn) cnt++;
-        if(v[i] % mn != 0) flag = true;
+        ans-=(v[i]/2+1);
+        ans-=(c-v[i]+1);
+        if(v[i]&1) od++;
+        else ev++;
     }
 
-    if(cnt == 1 or flag){
-        yes; return;
-    }
-    no;
+    ans = ans + (ev*(ev+1))/2;
+    ans = ans + (od*(od+1))/2;
+
+    cout<<ans<<endl;
 }
      
 signed main(){

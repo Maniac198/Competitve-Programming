@@ -1,9 +1,56 @@
 #include <bits/stdc++.h>
 using namespace std; 
 
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> st;
+// order_by_key()
+// find_by_order()
+
 int f();
 void use_somehow(int a);
 bool is_good(int x);
+
+const int MOD = 1e9 + 7;
+
+int power(int a, int b, int m = MOD) {int res = 1; while (b > 0) {if (b & 1)res = (res * a) % MOD; a = (a * a) % MOD; b = b >> 1;} return res;}
+ 
+int invMOD(int a, int m = MOD) {return power(a, m - 2, m);} //For prime MOD
+ 
+int mAdd(int a, int b, int m = MOD) {return (((a + b) % m) + m) % m;}
+int mSub(int a, int b, int m = MOD) {return (((a - b) % m) + m) % m;}
+int mMul(int a, int b, int m = MOD) {return (((a * b) % m) + m) % m;}
+int mDiv(int a, int b, int m = MOD) {return mMul(a, invMOD(b), m);}
+
+int N = 1e6 + 1;
+ 
+vector<int> factorial (N, 1);
+vector<int> invFactorial (N, 1);
+ 
+//Call this in main function
+void prenCr(){
+    for (int i = 2; i < N; i++)
+    {
+        factorial[i] = mMul(i, factorial[i-1]);
+        invFactorial[i] = mDiv(1, factorial[i]);
+    }
+}
+ 
+int nCr(int n, int r){
+    if(r > n || r < 0){
+        return 0;
+    }
+    return mMul(factorial[n], mMul(invFactorial[r], invFactorial[n-r]));
+}
+
+int ncr(int n, int r){
+    double sum = 1; 
+    for(int i = 1; i <= r; i++){
+        sum = sum * (n - r + i) / i;
+    }
+    return (int) sum;
+}
 
 int nxt(){
     int x; cin>>x; 
@@ -84,5 +131,10 @@ int main() {
 
     // priority queue defination
     priority_queue<int,vector<int>,greater<int>> q(vec.begin(),vec.end()); 
+
+    // use of bs on multiset and vector
+    multiset<int> ms;           // use when bs and removal simultaneously
+    ms.upper_bound(key);
+    
 }
 
