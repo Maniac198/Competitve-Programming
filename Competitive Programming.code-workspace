@@ -45,7 +45,8 @@
             "initializer_list": "cpp",
             "regex": "cpp",
             "ranges": "cpp",
-            "stacktrace": "cpp"
+            "stacktrace": "cpp",
+            "iosfwd": "cpp"
         }
     }
 }
