@@ -1,59 +1,62 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
-#define      yes {cout<<"YES"<<endl;}
-#define      no {cout<<"NO"<<endl;}
-#define      ll long long 
-#define      endl '\n';
-#define      all(x) x.begin(),x.end()
-#define      rep(i,b,e) for(__typeof(e) i=b-(b>e); i != (e)-(b>e);i+=1-2*(b>e))
-int          lcm(int a,int b) { return a/__gcd(a,b)*b; }
-int          nxt(){ int x; cin>>x; return x;}
-const        int MOD = 1e9 + 7;
+int minMoves(int N, int M, vector<vector<int>>& X) {
 
-bool check(int mid, vector<int> v, int color,int n){
-    bool ok = true;
-    vector<bool> isReachable(n,false);
-    for(int i = 0; i<n; i++){
-        int j = i; 
-        while( j < i + mid ){
-            if(v[j] == color){
-                isReachable[j] = true;
-                i = j;
-                break;
-            }   
-            isReachable[j] = true;
-            j++;
+    vector<vector<bool>> visited(N + 1, vector<bool>(M + 1, false));
+    vector<vector<int>> min_moves(N + 1, vector<int>(M + 1,0));
+    queue<pair<pair<int, int>, int>> q;  // {{i, j}, moves}
+
+    // Starting cell is visited with 0 moves
+    visited[0][0] = true;
+    q.push({{0, 0}, 0});
+
+    // Define valid moves
+    vector<pair<int, int>> directions = {{1, 0}, {0, 1}};
+
+    while (!q.empty()) {
+        int i = q.front().first.first;
+        int j = q.front().first.second;
+        int moves = q.front().second;
+        q.pop();
+
+        // Check if reached destination
+        if (i == N && j == M) {
+            return moves;
         }
 
-        if(ok and v[j] != color){
-            i = j+1;
-            ok = false;
+        // Explore valid moves
+        for (auto& d : directions) {
+            int ni = i + d.first * X[i][j];
+            int nj = j + d.second * X[i][j];
+
+            // Check if new cell is within bounds and not visited
+            if (ni >= 1 && ni <= N && nj >= 1 && nj <= M && !visited[ni][nj]) {
+                visited[ni][nj] = true;
+                min_moves[ni][nj] = moves + 1;
+                q.push({{ni, nj}, moves + 1});
+            }
         }
     }
 
-    if(isReachable[n-1]) return true;
+    // If destination is unreachable
+    return -1;
 
-    return false;
 }
 
-void solve(){
-    int n; cin >> n; 
-    vector<int> v(n); 
-    rep(i,0,n){
-        cin >> v[i]; 
-        v[i]--;
-    }
+int main() {
+    int N = 5;
+    int M = 5;
+    vector<vector<int>> X = {
+        {2, 2, 1, 1, 2},
+        {1, 1, 2, 1, 1},
+        {2, 1, 1, 1, 2},
+        {1, 1, 1, 2, 2},
+        {2, 1, 1, 1, 1}
+    };
 
-    cout << check(2,v,1,7) << endl;
-}
-     
-int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
+    cout << "Minimum number of moves: " << minMoves(N, M, X) << endl;
 
-    int t = 1;
-    while(t--){
-        solve();
-    }
+    return 0;
 }

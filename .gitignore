@@ -2,3 +2,5 @@
 .json
 .vscode/
 .cph/
+*.exe
+.code-workspace

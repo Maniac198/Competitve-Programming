@@ -20,6 +20,9 @@
         },
         {
             "path": "../InhouseRepo"
+        },
+        {
+            "path": "../syncfusion test"
         }
     ],
     "settings": {
@@ -49,7 +52,8 @@
             "regex": "cpp",
             "ranges": "cpp",
             "stacktrace": "cpp",
-            "iosfwd": "cpp"
+            "iosfwd": "cpp",
+            "*.tcc": "cpp"
         }
     }
 }
