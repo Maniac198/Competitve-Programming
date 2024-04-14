@@ -13,28 +13,40 @@ const        int MOD = 1e9 + 7;
 
 void solve(){
     int n; cin>>n; 
-    vector<string> v(2);
-    cin>>v[0]>>v[1];
+    // vector<string> v(2);
+    // cin>>v[0]>>v[1];
+    string s1,s2; cin >> s1 >> s2;
 
-    if(v[1][n-2] == '<'){
-        no; return;
+    // if(v[1][n-2] == '<'){
+    //     no; return;
+    // }
+
+    // int x = 1, y = n-2; 
+    // while(y>0){
+    //     if(v[(x+1)%2][y-1] == '>'){
+    //         x = (x+1)%2;
+    //         y = y-1;
+    //     }
+    //     else if(y>=2 and v[x][y-2]== '>'){
+    //         y = y-2;
+    //     }
+    //     else{
+    //         no; return;
+    //     }
+    // }
+
+    // yes; 
+
+    bool check=false;
+    for (int  i = 1; i < n; i+=2){
+        if((s1[i]=='<'&&s2[i-1]=='<')||s1[i]=='<'&&s2[i+1]=='<'){
+            cout<<"NO"<<endl;
+            return;
+        }
     }
-
-    int x = 1, y = n-2; 
-    while(y>0){
-        if(v[(x+1)%2][y-1] == '>'){
-            x = (x+1)%2;
-            y = y-1;
-        }
-        else if(y>=2 and v[x][y-2]== '>'){
-            y = y-2;
-        }
-        else{
-            no; return;
-        }
-    }
-
-    yes; 
+    
+    cout<<"YES"<<endl;
+    
 }
      
 signed main(){
