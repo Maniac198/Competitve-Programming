@@ -1,59 +1,13 @@
 {
-    "folders": [
-        {
-            "path": "."
-        },
-        {
-            "path": "../Inhouse/Task-Management"
-        },
-        {
-            "path": "../React/my-ap"
-        },
-        {
-            "path": "../../../../../../xampp/htdocs/todo-app"
-        },
-        {
-            "path": "../Assignment 3/angular17_login_signup_localstorage"
-        },
-        {
-            "path": "../InhouseTodo/InhouseRepo"
-        },
-        {
-            "path": "../InhouseRepo"
-        },
-        {
-            "path": "../syncfusion test"
-        }
-    ],
-    "settings": {
-        "files.associations": {
-            "valarray": "cpp",
-            "iostream": "cpp",
-            "unordered_set": "cpp",
-            "chrono": "cpp",
-            "span": "cpp",
-            "utility": "cpp",
-            "type_traits": "cpp",
-            "ostream": "cpp",
-            "random": "cpp",
-            "limits": "cpp",
-            "numeric": "cpp",
-            "array": "cpp",
-            "deque": "cpp",
-            "forward_list": "cpp",
-            "list": "cpp",
-            "string": "cpp",
-            "unordered_map": "cpp",
-            "vector": "cpp",
-            "string_view": "cpp",
-            "rope": "cpp",
-            "slist": "cpp",
-            "initializer_list": "cpp",
-            "regex": "cpp",
-            "ranges": "cpp",
-            "stacktrace": "cpp",
-            "iosfwd": "cpp",
-            "*.tcc": "cpp"
-        }
-    }
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "test",
+		"files.associations": {
+			"iostream": "cpp"
+		}
+	}
 }
