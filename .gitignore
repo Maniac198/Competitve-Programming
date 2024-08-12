@@ -4,3 +4,6 @@
 .cph/
 *.exe
 .code-workspace
+src/*
+!src/*.c
+!src/*.cpp
